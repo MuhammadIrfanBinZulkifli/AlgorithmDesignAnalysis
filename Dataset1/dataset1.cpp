@@ -3,7 +3,6 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
-#include <ctime>
 using namespace std;
 
 void generateNum(int groupLeaderID, int size, string fileName) {

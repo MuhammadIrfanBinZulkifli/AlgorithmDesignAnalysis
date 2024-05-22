@@ -4,7 +4,6 @@
 #include <fstream>
 #include <iomanip>
 #include <unordered_map>
-#include <ctime>
 using namespace std;
 
 void starInfoGenerator(string starName, unsigned long long int memberID) {
