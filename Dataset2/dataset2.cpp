@@ -6,27 +6,8 @@
 #include <unordered_map>
 using namespace std;
 
-void starInfoGenerator(string starName, unsigned long long int memberID) {
-    
-    string fileName = starName + ".txt";
-    ofstream writeFile(fileName);
-    if(!writeFile.is_open()) {
-        cerr << "Error: file can't be opened" << endl;
-        return;
-    }
-    int x = rand() % 500 + 1;
-    int y = rand() % 500 + 1;
-    int z = rand() % 500 + 1;
-    int weight = rand() % 100 + 1;
-    int profit = rand() % 100 + 1;
+void starInfoGenerator(unsigned long long int memberID, int starsNum) {
 
-    writeFile << starName << " " << x << " " << y << " " << z << " " << weight << " " << profit << endl;
-    writeFile.close();
-}
-
-int main() {
-    unsigned long long int memberID = 1211103094ULL + 1211103424ULL + 1211104288ULL;
-    srand(memberID);
     unordered_map<int, string> naming = {
         {0, "A"},
         {1, "B"},
@@ -48,11 +29,35 @@ int main() {
         {17, "R"},
         {18, "S"},
         {19, "T"},
-    };
+    };  
+    
+    string fileName = "star_details.txt";
+    ofstream writeFile(fileName);
 
-    for(int i = 0; i < 20; i++) {
-        string starName = "star_" + naming[i];
-        starInfoGenerator(starName, memberID);
+    if(!writeFile.is_open()) {
+        cerr << "Error: file can't be opened" << endl;
+        return;
     }
+
+    for(int i = 0; i < starsNum; i++) {
+
+        string starName = "star_" + naming[i];
+        int x = rand() % 500 + 1;
+        int y = rand() % 500 + 1;
+        int z = rand() % 500 + 1;
+        int weight = rand() % 100 + 1;
+        int profit = rand() % 100 + 1;
+
+        writeFile << starName << " " << x << " " << y << " " << z << " " << weight << " " << profit << endl;
+    }
+    
+    writeFile.close();
+}
+
+int main() {
+    unsigned long long int memberID = 1211103094ULL + 1211103424ULL + 1211104288ULL;
+    const int starsNum = 20;
+    srand(memberID);
+    starInfoGenerator(memberID, starsNum);
     return 0;
 }
