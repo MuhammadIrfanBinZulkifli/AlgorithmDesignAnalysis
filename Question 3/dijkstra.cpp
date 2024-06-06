@@ -153,7 +153,12 @@ int main() {
         cout << "Shortest distance from " << stars[source].name << " to " << stars[i].name << ": " << distances[i] << endl;
     }
 
-    return 0;
+    // Output shortest distances from source star
+    ofstream file("shortest_distances.txt");
+    for (size_t i = 0; i < distances.size(); ++i) {
+        file << "Shortest distance from " << stars[source].name << " to " << stars[i].name << ": " << distances[i] << std::endl;
+    }
+    file.close();
 }
 
 // References:
