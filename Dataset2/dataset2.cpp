@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
-#include <unordered_map>
+#include <map>
 #include <vector>
 #include <cmath> 
 using namespace std;
@@ -15,7 +15,7 @@ struct Star {
     int profit;
 };
 
-void starInfoGenerator(vector<Star>& stars, unordered_map<int, string> naming, unsigned long long int memberID, int starsNum) {
+void starInfoGenerator(vector<Star>& stars, map<int, string> naming, unsigned long long int memberID, int starsNum) {
     
     string fileName = "star_details.txt";
     ofstream writeFile(fileName);
@@ -45,9 +45,9 @@ double calculateDistance(int x1, int y1, int z1, int x2, int y2, int z2) {
     return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2) + pow(z1 - z2, 2));
 }
 
-void edgesRecorder(unordered_map<int, string> naming, vector<Star> stars) {
+void edgesRecorder(map<int, string> naming, vector<Star> stars) {
     string fileName = "edges_details.txt";
-    unordered_multimap<string, string> edgesPair = {
+    multimap<string, string> edgesPair = {
         {"A", "B"}, {"A", "C"}, {"A", "D"}, {"A", "E"}, {"A", "O"}, {"A", "R"}, {"B", "O"}, {"B", "D"}, {"B", "C"}, {"C", "E"},
         {"C", "R"}, {"D", "O"}, {"D", "E"}, {"D", "F"}, {"D", "G"}, {"D", "P"}, {"E", "R"}, {"E", "S"}, {"E", "H"}, {"E", "F"},
         {"F", "S"}, {"F", "H"}, {"F", "G"}, {"F", "P"}, {"G", "H"}, {"G", "I"}, {"G", "J"}, {"G", "Q"}, {"G", "P"}, {"H", "S"},
@@ -93,7 +93,7 @@ int main() {
     const int starsNum = 20;
     // vector<vector<int>> stars;
     vector<Star> stars;
-    unordered_map<int, string> naming = {
+    map<int, string> naming = {
         {0, "A"},
         {1, "B"},
         {2, "C"},
