@@ -59,35 +59,42 @@ void KruskalMST(Graph& graph) {
     vector<Edge> result;
     DisjointSets ds;
 
+    // #1 : We  define a 'cloud' of sets, one for each vertex
     cout << "Creating sets for each vertex..." << endl;
     for (const auto& edge : graph.edges) {
         ds.makeSet(edge.src);
         ds.makeSet(edge.dest);
     }
 
+    // #2 : We make a priority queue by sorting the edges by weight
     cout << "Sorting edges by weight..." << endl;
     sort(graph.edges.begin(), graph.edges.end(), [](const Edge& a, const Edge& b) {
         return a.weight < b.weight;
     });
 
-    cout << "Processing edges in sorted order..." << endl;
+    // #3 : We process the edges in sorted order
+    cout << "Processing edges in sorted order...\n\n" << endl;
     for (const auto& edge : graph.edges) {
         string rootSrc = ds.find(edge.src);
         string rootDest = ds.find(edge.dest);
 
         cout << "Considering edge " << edge.src << " - " << edge.dest << " with weight " << edge.weight << endl;
+        
+        // #4 : We merge the 'clouds' by adding the edge to the MST if the vertices are in different sets
         if (rootSrc != rootDest) {
-            cout << "Adding edge " << edge.src << " - " << edge.dest << " to the MST" << endl;
+            cout << "Adding edge " << edge.src << " - " << edge.dest << " to the MST\n" << endl;
             result.push_back(edge);
             ds.unionSets(rootSrc, rootDest);
         } else {
-            cout << "Edge " << edge.src << " - " << edge.dest << " forms a cycle and is discarded" << endl;
+            cout << "Edge " << edge.src << " - " << edge.dest << " forms a cycle and is discarded\n" << endl;
         }
     }
 
     ofstream outfile("mst_edges.txt");
 
-    cout << "\nEdges in the MST:" << endl;
+    cout << "\n-------------------" << endl;
+    cout << "Edges in the MST:" << endl;
+    cout << "-------------------" << endl;
     double totalWeight = 0;
     for (const auto& edge : result) {
         cout << edge.src << " - " << edge.dest << " : " << edge.weight << endl;
@@ -95,7 +102,7 @@ void KruskalMST(Graph& graph) {
         totalWeight += edge.weight;
     }
 
-    cout << "Total weight of MST: " << totalWeight << endl;
+    cout << "\nTotal weight of MST: " << totalWeight << endl;
     outfile << "Total weight of MST: " << totalWeight << endl;
     outfile.close();
 }
@@ -104,6 +111,11 @@ int main() {
     Graph graph;
     ifstream infile("../Dataset2/edges_details.txt");
     string line;
+    
+    cout << "\n-----------------------------------------------"
+         << "\n|                 Question 3                  |"
+         << "\n|     Minimum Spanning Tree (Kruskal's)       |"
+         << "\n-----------------------------------------------\n" << endl;
     
     if (!infile) {
         cerr << "Unable to open file" << endl;
@@ -122,7 +134,9 @@ int main() {
 
     infile.close();
 
+    cout << "----------------------------------------------" << endl;
     cout << "Running Kruskal's algorithm to find the MST..." << endl;
+    cout << "---------------------------------------------- \n" << endl;
     KruskalMST(graph);
     
     return 0;
