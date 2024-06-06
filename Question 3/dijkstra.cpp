@@ -18,16 +18,6 @@ struct Star {
         : name(name), x(x), y(y), z(z), weight(weight) {}
 };
 
-// Structure to represent an edge between stars (Nerdylicious, 2015)
-struct Edge {
-    int source;
-    int target;
-    double weight;
-
-    Edge(int source, int target, double weight)
-        : source(source), target(target), weight(weight) {}
-};
-
 // Function to calculate the Euclidean distance between two stars
 double calculateDistance(const Star& s1, const Star& s2) {
     return sqrt(pow(s2.x - s1.x, 2) + pow(s2.y - s1.y, 2) + pow(s2.z - s1.z, 2));
@@ -71,7 +61,6 @@ vector<vector<double>> createGraph(const vector<Star>& stars) {
 
     // Print the adjacency matrix
 
-    /*
     cout << "Adjacency matrix of the graph:" << endl;
     for (size_t i = 0; i < graph.size(); ++i) {
         for (size_t j = 0; j < graph[i].size(); ++j) {
@@ -81,7 +70,7 @@ vector<vector<double>> createGraph(const vector<Star>& stars) {
     }
 
     cout << "\n" << endl;
-    */
+    
     return graph;    
 }
 
