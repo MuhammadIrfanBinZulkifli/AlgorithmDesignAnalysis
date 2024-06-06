@@ -115,8 +115,6 @@ vector<double> DijkstraDistances(const vector<vector<double>>& graph, int source
     return distances;
 }
 
-
-
 int main() {
 
     // Printing the program details 
