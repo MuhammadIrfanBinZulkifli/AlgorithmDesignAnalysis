@@ -14,7 +14,7 @@ void generateNum(int groupLeaderID, int size, string fileName) {
     }
 
     for(int i = 0; i < size; i++) {
-        int randomNum = rand() % 1000 + 1;
+        int randomNum = rand() % 1000 + 1; // generate random number from 1 to 1000
         writeFile << randomNum << " ";
     }
 
@@ -23,7 +23,7 @@ void generateNum(int groupLeaderID, int size, string fileName) {
 }
 
 int main() {
-    int sizes[6] = {100, 1000, 10000, 100000, 500000, 1000000};
+    int sizes[6] = {100, 1000, 10000, 100000, 500000, 1000000}; // array containing size of the datasets to be generated
     int getArrayLength = sizeof(sizes) / sizeof(int);
     int groupLeaderID = 1211103115; // Azri Syahmi ID
     srand(groupLeaderID);
