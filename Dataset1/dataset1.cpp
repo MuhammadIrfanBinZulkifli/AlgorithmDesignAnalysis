@@ -26,9 +26,9 @@ int main() {
     int sizes[6] = {100, 1000, 10000, 100000, 500000, 1000000}; // array containing size of the datasets to be generated
     int getArrayLength = sizeof(sizes) / sizeof(int);
     int groupLeaderID = 1211103115; // Azri Syahmi ID
-    srand(groupLeaderID);
+    srand(groupLeaderID); // use the srand function to seed the random number generator with the groupLeaderID
     
-    for(int i = 0; i < getArrayLength; i++) {
+    for(int i = 0; i < getArrayLength; i++) { // loop for generating random numbers for each dataset
         string fileName = "set_" + to_string(i + 1) + ".txt";
         generateNum(groupLeaderID, sizes[i], fileName);
     }
