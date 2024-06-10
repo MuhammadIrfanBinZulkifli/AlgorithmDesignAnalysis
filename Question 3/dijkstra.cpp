@@ -5,6 +5,7 @@
 #include <queue>
 #include <map>
 #include <climits>
+#include <stack>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ public:
 };
 
 // Custom comparator for the priority queue to generate a min-heap - as pq is a max-heap by default
-// We use Min-Heap here because we want to extract the minimum distance node -  the shortest path
+// We use Min-Heap here because we want to extract the minimum distance node - the shortest path
 class Compare {
 public:
     bool operator() (const pair<string, double>& p1, const pair<string, double>& p2) {
@@ -89,13 +90,37 @@ void DijkstraDistances(Graph& graph, const string& start) {
     cout << "Final shortest distances:" << endl;
     cout << "-------------------------" << endl;
     for (const auto& distance : distances) {
-        cout << "Distance from " << start << " to " << distance.first << " is " << distance.second << endl;
-        outfile << "Distance from " << start << " to " << distance.first << " is " << distance.second << endl;
+        cout << "Distance from " << start << " to " << distance.first << " is " << distance.second << " - Path: ";
+        outfile << "Distance from " << start << " to " << distance.first << " is " << distance.second << " - Path: ";
+        
+        // This part is to include the path chosen to reach the vertex from the starting vertex
+        // We use a stack to reverse the order of the path
+        stack<string> path_stack;
+        string path_vertex = distance.first;
+        
+        while (path_vertex != start && previous.find(path_vertex) != previous.end()) {
+            path_stack.push(path_vertex);
+            path_vertex = previous[path_vertex];
+        }
+        path_stack.push(start);
+        
+        // Print and write the path
+        while (!path_stack.empty()) {
+            cout << path_stack.top();
+            outfile << path_stack.top();
+            path_stack.pop();
+            if (!path_stack.empty()) {
+                cout << " -> ";
+                outfile << " -> ";
+            }
+        }
+        
+        cout << endl;
+        outfile << endl;
     }
 
     outfile.close();
 }
-
 
 int main() {
     Graph graph;
