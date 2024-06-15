@@ -15,8 +15,18 @@ struct Star { // stars structure containing members of name, x, y, z, weight, an
     int profit;
 };
 
+int numberGenerator(int counter_uniqueNum, string unique_num[], int length) {
+    string randomStrNum;
+    for(int j = 0; j < length; j++) {
+        int randomIndex = rand() % counter_uniqueNum;
+        string strDigit = unique_num[randomIndex];
+        randomStrNum = randomStrNum + strDigit;
+    }
+    return stoi(randomStrNum);
+}
+
 // function used to generate the star details and write in the text file
-void starInfoGenerator(vector<Star>& stars, string naming[], unsigned long long int memberID, int starsNum) {
+void starInfoGenerator(vector<Star>& stars, string naming[], int starsNum, string unique_num[], int counter_uniqueNum) {
     
     string fileName = "star_details.txt"; // filename to be used to store the stars details
     ofstream writeFile(fileName); // create ofstream object to write the file of fileName
@@ -29,11 +39,12 @@ void starInfoGenerator(vector<Star>& stars, string naming[], unsigned long long 
     for(int i = 0; i < starsNum; i++) {
 
         string starName = "star_" + naming[i]; // get the stars name
-        int x = rand() % 500 + 1; // generate the x-coordinate
-        int y = rand() % 500 + 1; // generate the y-coordinate
-        int z = rand() % 500 + 1; // generate the z-coordinate
-        int weight = rand() % 100 + 1; // generate the weight
-        int profit = rand() % 100 + 1; // generate the profit
+        int x, y, z, weight, profit;
+        x = numberGenerator(counter_uniqueNum, unique_num, 3);
+        y = numberGenerator(counter_uniqueNum, unique_num, 3);
+        z = numberGenerator(counter_uniqueNum, unique_num, 3);
+        weight = numberGenerator(counter_uniqueNum, unique_num, 3);
+        profit = numberGenerator(counter_uniqueNum, unique_num, 3);
         stars.push_back({starName, x, y, z, weight, profit}); // create the structures of stars and push to the stars vector
         writeFile << starName << " " << x << " " << y << " " << z << " " << weight << " " << profit << endl; // write the details into the "stars_details.txt"
     }
@@ -97,6 +108,9 @@ int main() {
     const int starsNum = 20; // total stars numbers to be generated
     vector<Star> stars; // vector that containing structures of all stars generated
     string naming[20]; // array for the stars naming purposes
+    
+    string unique_num[] = {"0", "1", "3", "6", "8"}; // unique number in members id
+    int counter_uniqueNum = 5; // length of unique number
 
     // for loop to add the naming into the naming array
     for (int i = 0; i < 20; i++) { 
@@ -104,7 +118,7 @@ int main() {
     } 
 
     srand(memberID); // use the srand function to seed the random number generator with the memberID
-    starInfoGenerator(stars, naming, memberID, starsNum); // call starInfoGenerator to generate the stars
+    starInfoGenerator(stars, naming, starsNum, unique_num, counter_uniqueNum); // call starInfoGenerator to generate the stars
     edgesRecorder(stars); // call edgesRecorder method to record the edges with the distance for each edge
     return 0;
 }

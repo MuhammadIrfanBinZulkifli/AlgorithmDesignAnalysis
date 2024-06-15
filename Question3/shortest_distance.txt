@@ -1,20 +1,20 @@
 Distance from A to A is 0 - Path: A
-Distance from A to B is 238.91 - Path: A -> B
-Distance from A to C is 315.11 - Path: A -> C
-Distance from A to D is 288.59 - Path: A -> D
-Distance from A to E is 23.37 - Path: A -> E
-Distance from A to F is 216.71 - Path: A -> E -> F
-Distance from A to G is 351.64 - Path: A -> E -> F -> G
-Distance from A to H is 116.15 - Path: A -> E -> H
-Distance from A to I is 664.48 - Path: A -> E -> H -> I
-Distance from A to J is 817.03 - Path: A -> E -> F -> G -> J
-Distance from A to K is 534.32 - Path: A -> E -> H -> K
-Distance from A to L is 664.66 - Path: A -> E -> H -> T -> N -> L
-Distance from A to M is 835.09 - Path: A -> E -> H -> T -> N -> M
-Distance from A to N is 542.9 - Path: A -> E -> H -> T -> N
-Distance from A to O is 351.6 - Path: A -> O
-Distance from A to P is 663.03 - Path: A -> E -> F -> P
-Distance from A to Q is 697.44 - Path: A -> E -> F -> G -> Q
-Distance from A to R is 391.98 - Path: A -> R
-Distance from A to S is 425.9 - Path: A -> E -> S
-Distance from A to T is 333.8 - Path: A -> E -> H -> T
+Distance from A to B is 631.55 - Path: A -> B
+Distance from A to C is 612.02 - Path: A -> C
+Distance from A to D is 645.28 - Path: A -> D
+Distance from A to E is 850.36 - Path: A -> E
+Distance from A to F is 940.64 - Path: A -> O -> P -> F
+Distance from A to G is 1333.17 - Path: A -> D -> G
+Distance from A to H is 1092.43 - Path: A -> E -> H
+Distance from A to I is 2082.85 - Path: A -> E -> H -> I
+Distance from A to J is 2030.03 - Path: A -> O -> P -> Q -> J
+Distance from A to K is 1808.3 - Path: A -> E -> H -> K
+Distance from A to L is 2309.47 - Path: A -> O -> P -> Q -> M -> L
+Distance from A to M is 1332.74 - Path: A -> O -> P -> Q -> M
+Distance from A to N is 1989.13 - Path: A -> O -> P -> Q -> M -> N
+Distance from A to O is 91.18 - Path: A -> O
+Distance from A to P is 430.63 - Path: A -> O -> P
+Distance from A to Q is 1178.79 - Path: A -> O -> P -> Q
+Distance from A to R is 557.34 - Path: A -> R
+Distance from A to S is 1571.23 - Path: A -> R -> S
+Distance from A to T is 1626.67 - Path: A -> E -> H -> T
